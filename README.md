@@ -1,8 +1,12 @@
-# BaLaTeX: LaTeX, brought into the Internet Age
+# BaLaTeX: LaTeX, for the Information Super Highway
+
+Tired of memorizing the less-than-modern syntax of LaTeX? Can't live without
+kerning, Computer Modern Serif and well-justified paragraphs? BaLaTeX is LaTeX
+written using XHTML! See Below:
 
 # Getting Started
 
-<pre>
+```html
     <!DOCTYPE html>
     <html>
         <head>
@@ -23,4 +27,4 @@
             </article>
         </body>
     </html>
-</pre>
+```
