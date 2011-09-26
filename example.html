@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Interesting Document</title>
+        <script type="text/javascript" src="balatex.js"></script>
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']]
+            }
+        });
+        </script>
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+        </script>
+    </head>
+    <body>
+        <article title="Your Interesting Document">
+            <header>
+                <p>By: Your Name</p>
+            </header>
+            <nav title="Table of Contents"></nav>
+            <section title="Introduction">
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            volutpat nisi id purus pellentesque mattis. Quisque et enim ac diam
+            eleifend hendrerit non vitae tellus. Nam purus nibh, blandit et
+            suscipit eu, pretium id nunc. Morbi porttitor convallis
+            scelerisque. Vestibulum convallis eleifend convallis. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Cras pulvinar vehicula
+            nibh, non posuere urna pulvinar dignissim. Sed in massa laoreet
+            arcu ultrices ultricies. Maecenas dictum imperdiet hendrerit.
+            </p>
+            <p>You get $\LaTeX$ style math for free with <strong>MathJax</strong>:</p>
+            $$
+                \zeta(s) =
+                \sum_{n=1}^\infty \frac{1}{n^s} =
+                \frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \cdots \;\;\;\;\;\;\;\sigma = \mathfrak{R}(s) > 1.
+                \!
+            $$
+            <p>Ya, it's pretty sexy. (I'm sure you've also noticed how quotes get turned into ``sexy'' quotes too!)</p>
+            </section>
+            <section title="A Section">
+                <p>
+                    This is to demonstrate nesting of sections
+                </p>
+                <section title="A sub section!">
+                    <p>
+                        In cursus, nisi id tempor viverra, nisi velit bibendum turpis, quis
+                        posuere velit ante porttitor odio. Suspendisse dolor sem,
+                        condimentum ac ullamcorper sit amet, pretium id tortor. Suspendisse
+                        gravida, erat eu lacinia fringilla, augue enim suscipit nunc, sit
+                        amet mattis dolor odio eu risus. Praesent dignissim, sapien
+                        bibendum rutrum interdum, nisi nibh suscipit tellus, ut egestas
+                        orci tellus vel purus. Quisque euismod congue rutrum. Nulla non
+                        orci orci, non porttitor sapien. In eget massa nunc. Phasellus
+                        cursus nisi in erat sagittis quis gravida metus dapibus. Fusce vel
+                        enim nisi. Donec in enim sed diam molestie blandit. Nulla tincidunt
+                        arcu eget neque vehicula sit amet placerat lacus viverra. Donec
+                        lobortis, eros vitae porttitor aliquet, quam augue suscipit ipsum,
+                        quis dictum neque lorem vel leo.
+                    </p>
+                    <p>
+                        Maecenas et tellus id neque fringilla mattis. Cum sociis natoque
+                        penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                        Nunc id ultricies velit. Duis interdum velit ac augue euismod
+                        aliquam. Donec tincidunt augue eu leo tempor quis lacinia elit
+                        ultricies. Fusce sed ligula et ipsum consectetur porta non ut arcu.
+                        Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+                        per inceptos himenaeos. Donec lorem orci, viverra eget consectetur
+                        id, lobortis vel erat. Mauris erat nunc, hendrerit nec rhoncus eu,
+                        sodales a nisl. Aliquam et metus turpis. Quisque venenatis aliquam
+                        viverra. Proin consectetur aliquet felis nec pharetra. Nunc
+                        ullamcorper nulla rhoncus nisi vehicula sagittis. Praesent nec
+                        nulla a est tristique bibendum. Donec blandit sem quis augue auctor
+                        laoreet. Donec varius sem sit amet ipsum malesuada quis suscipit
+                        ante tempor.
+                    </p>
+                    <section title="A sub SUB Section!!!">
+                        <p>That's deep man!</p>
+                    </section>
+                </section>
+            </section>
+            <footer>
+            This document was created with <a href="http://www.git.com/stephenbalaban/BaLaTeX"
+                title="BaLaTeX Web LaTeX Repository">$Ba\LaTeX$</a>
+            </footer>
+        </article>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+/**
+Font Styles MAPPING
+CMUBright-Bold                          (cmunbbx.otf)    ;
+/CMUSerif-BoldItalic                     (cmunbi.otf)   ;
+/CMUSerif-BoldSlanted                    (cmunbl.otf)   ;
+/CMUBright-Oblique                       (cmunbmo.otf)  ;
+/CMUBright-Roman                         (cmunbmr.otf)  ;
+/CMUBright-SemiboldOblique               (cmunbso.otf)  ;
+/CMUBright-Semibold                      (cmunbsr.otf)  ;
+/CMUTypewriter-Light                     (cmunbtl.otf)  ;
+/CMUTypewriter-LightOblique              (cmunbto.otf)  ;
+/CMUSerif-Bold                           (cmunbx.otf)   ;
+/CMUBright-BoldOblique                   (cmunbxo.otf)  ;
+/CMUClassicalSerif-Italic                (cmunci.otf)   ;
+/CMUTypewriter-Italic                    (cmunit.otf)   ;
+/CMUConcrete-BoldItalic                  (cmunobi.otf)  ;
+/CMUConcrete-Bold                        (cmunobx.otf)  ;
+/CMUConcrete-Roman                       (cmunorm.otf)  ;
+/CMUConcrete-Italic                      (cmunoti.otf)  ;
+/CMUSerif-BoldNonextended                (cmunrb.otf)   ;
+/CMUSerif-Roman                          (cmunrm.otf)   ;
+/CMUSansSerif-Oblique                    (cmunsi.otf)   ;
+/CMUSerif-RomanSlanted                   (cmunsl.otf)   ;
+/CMUSansSerif-BoldOblique                (cmunso.otf)   ;
+/CMUSansSerif                            (cmunss.otf)   ;
+/CMUSansSerif-DemiCondensed              (cmunssdc.otf) ;
+/CMUTypewriter-Oblique                   (cmunst.otf)   ;
+/CMUSansSerif-Bold                       (cmunsx.otf)   ;
+/CMUTypewriter-Bold                      (cmuntb.otf)   ;
+/CMUSerif-Italic                         (cmunti.otf)   ;
+/CMUTypewriter-Regular                   (cmuntt.otf)   ;
+/CMUTypewriter-BoldItalic                (cmuntx.otf)   ;
+/CMUSerif-UprightItalic                  (cmunui.otf)   ;
+/CMUTypewriterVariable-Italic            (cmunvi.otf)   ;
+/CMUTypewriterVariable                   (cmunvt.otf)   ;
+ */
+
+@font-face { font-family: CMU; src: url('/usr/share/fonts/cm-unicode/cmunrm.otf') format("opentype"); }
+@font-face { font-family: CMU; src: url('/usr/share/fonts/cm-unicode/cmunbx.otf') format("opentype"); font-weight: bold;}
+@font-face { font-family: CMU; src: url('/usr/share/fonts/cm-unicode/cmunci.otf') format("opentype"); font-style: italic;}
+@font-face { font-family: CMU; src: url('/usr/share/fonts/cm-unicode/cmunbl.otf') format("opentype"); font-style: oblique; font-weight: bold; }
+@font-face { font-family: CMU; src: url('/usr/share/fonts/cm-unicode/cmunbi.otf') format("opentype"); font-style: italic; font-weight: bold; }
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmuntt.otf') format("opentype"); }
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmuntb.otf') format("opentype"); font-weight: bold; }
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmunit.otf') format("opentype"); font-style: italic;}
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmunst.otf') format("opentype"); font-style: oblique;}
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmuntx.otf') format("opentype"); font-style: italic; font-weight: bold;}
+@font-face { font-family: CMUT; src: url('/usr/share/fonts/cm-unicode/cmuntx.otf') format("opentype"); font-style: oblique; font-weight: bold;}
+
+/**
+ * Text & Article Styles
+ */
+
+html {
+    font-family: CMU, Serif;
+}
+
+*[hidden="True"] {
+    display: none;
+}
+
+indent {
+    display: block;
+    padding-left: 1.5em;
+}
+
+abbr {
+    border-bottom: 1px dotted #AAAAAA;
+    cursor: help;
+}
+
+pre, code {
+    font-family: CMUT, Monospace;
+}
+
+code {
+    white-space: pre;
+}
+
+body {
+    max-width: 48em;
+    margin: 0 auto;
+}
+
+p { /* justification like LaTeX */
+    text-align: justify;
+    text-indent: 1.5em;
+    margin: 0;
+}
+
+ /* first paragraph is NOT indented 
+  * (note: title causes nth-child(2))
+  * */
+section {
+    clear: both;
+}
+
+header>p:nth-child(2) {
+    text-indent: 0;
+}
+
+section>p:nth-child(2) {
+    text-indent: 0;
+}
+/* if the p is in a first-child column first paragraph is still NOT indented*/
+column:nth-child(2) p:nth-child(1) { 
+    text-indent: 0;
+}
+
+footer {
+    border-top: 1px solid #CCCCCC;
+    text-align: right;
+}
+
+figcaption {
+    text-align: center;
+}
+figure img {
+    display: block;
+    margin: 0 auto;
+}
+
+/** column **/
+column {
+    float: left;
+    width: 50%;
+}
+
+dl.inline dt {
+    float: left;
+    margin-right: 1em;
+}
+
+/** BALATEX SELF STYLE **/
+#balatex_bar {
+    background: #EEE;
+    border: 1px solid #CCC;
+    border-top: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 0 1em;
+}
+
+dl.qa dt {
+    font-weight: bold;
+    font-style: italic;
+}
