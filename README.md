@@ -11,7 +11,7 @@ written using XHTML! See Below:
     <html>
         <head>
             <title>Your Title</title>
-            <script type="text/javascript" src="balatex.js></script>
+            <script type="text/javascript" src="balatex.js"></script>
         </head>
         <body>
             <article title="Your Interesting Document">
@@ -28,3 +28,25 @@ written using XHTML! See Below:
         </body>
     </html>
 ```
+
+# Using Math
+
+To use math, simply include the following in your <code><head></code>:
+
+```html
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']]
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload">
+```
+
+Then, simply place $\LaTeX$-style math statements into your document e.g.
+<p>Euler's Identity: 
+            $$
+                e^{i\pi} + 1 = 0
+            $$
+</p>
