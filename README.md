@@ -45,10 +45,11 @@ To use math, simply include the following in your <code><head></code>:
 ```
 
 Then, simply place $\LaTeX$-style math statements into your document e.g.
+
 ```html
 <p>Euler's Identity: 
-            $$
-                e^{i\pi} + 1 = 0
-            $$
+    $$
+        e^{i\pi} + 1 = 0
+    $$
 </p>
 ```
