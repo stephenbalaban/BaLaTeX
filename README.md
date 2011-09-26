@@ -2,7 +2,7 @@
 
 # Getting Started
 
-<code>
+<pre>
     <!DOCTYPE html>
     <html>
         <head>
@@ -23,4 +23,4 @@
             </article>
         </body>
     </html>
-</code>
+</pre>
