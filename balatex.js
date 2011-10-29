@@ -85,6 +85,7 @@ var balabib = (function(){
     var THIS = document.getElementsByTagName("bibliography");
     var keyToNo;
     var bibMap;
+    var citations;
     return {
         getBib: function() {
             return THIS[0];
@@ -94,10 +95,10 @@ var balabib = (function(){
         },
         makeKeyToNo: function() {
             var dict = {};
-            var citations = document.getElementsByTagName("cite");
+            this.citations = document.getElementsByTagName("cite");
             var no = 1;
-            for(var i = 0; i < citations.length; i++) {
-                cite = citations[i];
+            for(var i = 0; i < this.citations.length; i++) {
+                cite = this.citations[i];
                 if (!_.include(_.keys(dict), cite.title)) {
                     dict[cite.title] = no;
                     no++;
@@ -118,20 +119,27 @@ var balabib = (function(){
             this.bibMap = bibMap;
             return bibMap;
         },
+        fillCitations: function() {
+            for(var i = 0; i < this.citations.length; i++) {
+                var title = this.citations[i].title;
+                this.citations[i].innerHTML = '<a href="#cite-'+this.keyToNo[title]+'">[' + this.keyToNo[title] + ']</a>';
+            }
+        },
         makeBib: function() {
-            keyToNo = this.makeKeyToNo();
+            this.keyToNo = this.makeKeyToNo();
             bibMap = this.makeBibMap();
             var li;
-            var resultHTML = "<h4>Citations</h3><ol>"
-            var keys = _.values(keyToNo);
-            var keyVals = _.keys(keyToNo);
+            var resultHTML = "<h4>Citations</h4><ol>"
+            var keys = _.values(this.keyToNo);
+            var keyVals = _.keys(this.keyToNo);
             for (var i = 0; i < keys.length; i++) {
-                li = "<li>" + bibMap[keyVals[i]] + "</li>"
+                li = '<li><a name="cite-' + i + '"></a>' + bibMap[keyVals[i]] + "</li>"
                 console.log(li);
                 resultHTML += li;
             }
             resultHTML += "</ol>";
             this.getBib().innerHTML = resultHTML;
+            this.fillCitations();
         }
     }
 })();

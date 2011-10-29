@@ -31,7 +31,7 @@ code {
 
 body {
     max-width: 48em;
-    margin: 0 auto;
+    margin: 2em auto;
 }
 
 p { /* justification like LaTeX */
@@ -60,7 +60,10 @@ column:nth-child(2) p:nth-child(1) {
 }
 
 footer {
+    font-size: 0.5em;
+    color: #666;
     border-top: 1px solid #CCCCCC;
+    text-align: right;
 }
 
 figcaption {
@@ -106,6 +109,9 @@ dl.qa dt {
 cite {
     vertical-align: super;
     font-style: normal;
+}
+cite a {
+    text-decoration: none;
 }
 
 bibliography {
