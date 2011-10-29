@@ -81,15 +81,71 @@ var h = (function() {
         }
     };
 })();
+var balabib = (function(){
+    var THIS = document.getElementsByTagName("bibliography");
+    var keyToNo;
+    var bibMap;
+    return {
+        getBib: function() {
+            return THIS[0];
+        },
+        getBibMap: function() {
+            return bibMap;
+        },
+        makeKeyToNo: function() {
+            var dict = {};
+            var citations = document.getElementsByTagName("cite");
+            var no = 1;
+            for(var i = 0; i < citations.length; i++) {
+                cite = citations[i];
+                if (!_.include(_.keys(dict), cite.title)) {
+                    dict[cite.title] = no;
+                    no++;
+                }
+            }
+            console.log(_.keys(dict));
+            console.log(dict);
+            return dict;
+        },
+        makeBibMap: function() {
+            var jsonString = '(' + this.getBib().innerHTML + ')';
+            try {
+                var bibMap = eval(jsonString);
+            } catch(error) {
+                console.info("Eval went wrong!");
+                console.info(error);
+            }
+            this.bibMap = bibMap;
+            return bibMap;
+        },
+        makeBib: function() {
+            keyToNo = this.makeKeyToNo();
+            bibMap = this.makeBibMap();
+            var li;
+            var resultHTML = "<h4>Citations</h3><ol>"
+            var keys = _.values(keyToNo);
+            var keyVals = _.keys(keyToNo);
+            for (var i = 0; i < keys.length; i++) {
+                li = "<li>" + bibMap[keyVals[i]] + "</li>"
+                console.log(li);
+                resultHTML += li;
+            }
+            resultHTML += "</ol>";
+            this.getBib().innerHTML = resultHTML;
+        }
+    }
+})();
 var balatex = (function(){
     var HEADERTAG = "h1";
+    var THISNAME = "balatex.js";
+    var ROOTID = "balatex";
     var ROOT = "";
     var TEMPLATE = "tm";
     var scriptIncludes = [
-                            {"src": ROOT + "underscore.js"}, {"src": ROOT + "resigtmp.js"},
+                            {"src": "underscore.js"}, {"src": "resigtmp.js"},
                          ];
     var cssIncludes = [
-                        {"href": ROOT + "balatex.css"}
+                        {"href": "balatex.css"}
                       ];
     var article = document.getElementsByTagName("article");
     var nav = document.getElementsByTagName("nav");
@@ -109,13 +165,12 @@ var balatex = (function(){
         },
         parseFile: function(content) {
             var replace = { 
-                            "`": "&lsquo;",
                             "``": "&ldquo;",
+                            "`": "&lsquo;",
                             "''": "&rdquo;",
-                            //"\"": "&rdquo;", // lol broken
                             "'": "&rsquo;",
-//                            "--": "&ndash;",
                             "---": "&mdash;",
+//                          "--": "&ndash;",
             }
             for(var key in replace) {
                 content = content.replace(new RegExp(key, "g"), replace[key]);
@@ -137,7 +192,22 @@ var balatex = (function(){
         templateExists: function() { 
             return document.getElementById(TEMPLATE) !== null;
         },
+        googleFonts: function() {
+            WebFontConfig = {
+                google: { families: [ 'Old+Standard+TT:400,400italic,700:latin' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        },
         insertIncludes: function() {
+            ROOT = balatex.getRoot();
             var head = document.head,
                 si = balatex.getScriptIncludes(),
                 ci = balatex.getCssIncludes(),
@@ -146,12 +216,12 @@ var balatex = (function(){
             for(var i = 0; i < si.length; i++) {
               script = document.createElement("script");
               script.type = "text/javascript";
-              script.src = si[i].src;
+              script.src = ROOT + si[i].src;
               h.prepend(head, script);
             }
             for(var i = 0; i < ci.length; i++) {
               link = document.createElement("link");
-              link.href = ci[i].href;
+              link.href = ROOT + ci[i].href;
               link.rel = "stylesheet";
               h.prepend(head, link);
             }
@@ -224,7 +294,15 @@ var balatex = (function(){
            console.log(result);
            return result
         },
+        getRoot: function() {
+            var result = document.getElementById(ROOTID);
+            result = result.src.split(THISNAME)[0];
+            return result;
+        },
         main: function() {
+            if (typeof balabib.getBib() !== 'undefined') {
+                balabib.makeBib();
+            };
             if (h.inside('math', balatex.getMeta().modules)) {
                 balatex.doMath();
                 if(typeof MathJax !== 'undefined') {
@@ -247,13 +325,13 @@ var balatex = (function(){
             if(typeof balatex.getNav() !== 'undefined') {
                 balatex.insertNav(data, balatex.getNav().title)
             }
-//            balatex.makeBar();
         }
     };
 })();
 
 /* MAIN */
 
+balatex.googleFonts();
 balatex.insertIncludes();
 window.onload = function () {
     balatex.main();
